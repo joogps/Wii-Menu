@@ -14,12 +14,17 @@ struct WiiMenuView: View {
                                     Channel(disabled: false, imageName: "App Store", colors: [Color(#colorLiteral(red: 0.7726274133, green: 0.8513433933, blue: 0.9158047438, alpha: 1)), Color(#colorLiteral(red: 0.5751777291, green: 0.6412175298, blue: 0.8295611739, alpha: 1))]),
                                     Channel(disabled: false, imageName: "Photos", colors: [Color.white, Color(#colorLiteral(red: 0.9196743369, green: 0.8816582561, blue: 0.8557353616, alpha: 1))]),
                                     Channel(), Channel(), Channel(), Channel(), Channel(), Channel(), Channel(), Channel(), Channel()]
+    
     private var columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+    
+    @State var selectedChannel: Channel? = nil
+    
+    @Namespace var animation
     
     var hourFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -55,12 +60,17 @@ struct WiiMenuView: View {
             channels
             footer
             
+            if selectedChannel != nil {
+                Color.black
+                ExpandedChannelView(channel: selectedChannel!, selectedChannel: $selectedChannel, animation: animation)
+            }
+            
             CursorView()
                 .clipped()
                 .shadow(color: Color.gray.opacity(0.35), radius: 0, x: 3, y: 3)
                 .position(cursorLocation)
-            
-            //Image("reference").resizable().frame(width: 960, height: 540).opacity(0.2)
+                .allowsHitTesting(false)
+                .zIndex(10)
         }
     }
     
@@ -77,7 +87,7 @@ struct WiiMenuView: View {
             spacing: 14
         ) {
             ForEach(items, id: \.self) { item in
-                ChannelView(channel: item)
+                ChannelView(channel: item, selectedChannel: $selectedChannel, animation: animation)
             }
         }.padding(.horizontal, 80)
         .padding(.bottom, 116)
@@ -95,10 +105,10 @@ struct WiiMenuView: View {
                     dateAndTime
                     
                     HStack {
-                        MenuGear(systemName: "applelogo", alignment: .trailing)
+                        MenuGear(identifier: "com.apple.systempreferences", systemName: "applelogo", alignment: .trailing)
                             .offset(x: -geo.size.width/2.9)
                         Spacer()
-                        MenuGear(systemName: "envelope.fill", alignment: .leading)
+                        MenuGear(identifier: "com.apple.mail", systemName: "envelope.fill", alignment: .leading)
                             .offset(x: geo.size.width/2.9)
                     }.frame(height: 104/540*geo.size.height)
                 }.frame(width: geo.size.width, height: 148/540*geo.size.height)
@@ -129,6 +139,7 @@ struct WiiMenuView: View {
 }
 
 struct MenuGear: View {
+    let identifier: String
     let systemName: String
     let alignment: Alignment
     
@@ -139,6 +150,9 @@ struct MenuGear: View {
             GearButton(systemName: systemName)
             .padding(9)
             .offset(y: -9)
+            .onTapGesture {
+                launchApp(identifier: identifier)
+            }
         }
     }
 }
@@ -167,17 +181,6 @@ struct GearButton: View {
     }
 }
 
-func launchApp(identifier: String) {
-    guard let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifier) else { return }
-
-    let path = "/bin"
-    let configuration = NSWorkspace.OpenConfiguration()
-    configuration.arguments = [path]
-    NSWorkspace.shared.openApplication(at: url,
-                                       configuration: configuration,
-                                       completionHandler: nil)
-}
-
 struct BottomSheet: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -203,6 +206,17 @@ struct BottomSheet: Shape {
 
         return path
     }
+}
+
+func launchApp(identifier: String) {
+    guard let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifier) else { return }
+
+    let path = "/bin"
+    let configuration = NSWorkspace.OpenConfiguration()
+    configuration.arguments = [path]
+    NSWorkspace.shared.openApplication(at: url,
+                                       configuration: configuration,
+                                       completionHandler: nil)
 }
 
 struct WiiMenu_Previews: PreviewProvider {
