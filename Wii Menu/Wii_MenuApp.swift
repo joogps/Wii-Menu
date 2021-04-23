@@ -11,7 +11,7 @@ import SwiftUI
 struct Wii_MenuApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WiiMenuView().frame(width: 960, height: 540)
         }
     }
 }

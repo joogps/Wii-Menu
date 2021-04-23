@@ -7,20 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2784881626325ED600051427 /* CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2784881526325ED600051427 /* CGImage.swift */; };
+		2784881C26325FD500051427 /* CursorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2784881B26325FD500051427 /* CursorView.swift */; };
 		27D6A05A26311C8E0068D890 /* Wii_MenuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D6A05926311C8E0068D890 /* Wii_MenuApp.swift */; };
-		27D6A05C26311C8E0068D890 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D6A05B26311C8E0068D890 /* ContentView.swift */; };
+		27D6A05C26311C8E0068D890 /* WiiMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D6A05B26311C8E0068D890 /* WiiMenuView.swift */; };
 		27D6A05E26311C910068D890 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27D6A05D26311C910068D890 /* Assets.xcassets */; };
 		27D6A06126311C910068D890 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27D6A06026311C910068D890 /* Preview Assets.xcassets */; };
+		27D6A06B26312A240068D890 /* TrackingAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D6A06A26312A240068D890 /* TrackingAreaView.swift */; };
+		27D6A06E26320A3E0068D890 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D6A06D26320A3E0068D890 /* ChannelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2784881526325ED600051427 /* CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImage.swift; sourceTree = "<group>"; };
+		2784881B26325FD500051427 /* CursorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorView.swift; sourceTree = "<group>"; };
 		27D6A05626311C8E0068D890 /* Wii Menu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wii Menu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D6A05926311C8E0068D890 /* Wii_MenuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wii_MenuApp.swift; sourceTree = "<group>"; };
-		27D6A05B26311C8E0068D890 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		27D6A05B26311C8E0068D890 /* WiiMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiiMenuView.swift; sourceTree = "<group>"; };
 		27D6A05D26311C910068D890 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27D6A06026311C910068D890 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		27D6A06226311C910068D890 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27D6A06326311C910068D890 /* Wii_Menu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wii_Menu.entitlements; sourceTree = "<group>"; };
+		27D6A06A26312A240068D890 /* TrackingAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingAreaView.swift; sourceTree = "<group>"; };
+		27D6A06D26320A3E0068D890 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +42,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2784881A26325FB000051427 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				27D6A06A26312A240068D890 /* TrackingAreaView.swift */,
+				2784881526325ED600051427 /* CGImage.swift */,
+			);
+			path = Extras;
+			sourceTree = "<group>";
+		};
 		27D6A04D26311C8E0068D890 = {
 			isa = PBXGroup;
 			children = (
@@ -54,7 +71,10 @@
 			isa = PBXGroup;
 			children = (
 				27D6A05926311C8E0068D890 /* Wii_MenuApp.swift */,
-				27D6A05B26311C8E0068D890 /* ContentView.swift */,
+				27D6A05B26311C8E0068D890 /* WiiMenuView.swift */,
+				2784881B26325FD500051427 /* CursorView.swift */,
+				27D6A06D26320A3E0068D890 /* ChannelView.swift */,
+				2784881A26325FB000051427 /* Extras */,
 				27D6A05D26311C910068D890 /* Assets.xcassets */,
 				27D6A06226311C910068D890 /* Info.plist */,
 				27D6A06326311C910068D890 /* Wii_Menu.entitlements */,
@@ -140,7 +160,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27D6A05C26311C8E0068D890 /* ContentView.swift in Sources */,
+				2784881626325ED600051427 /* CGImage.swift in Sources */,
+				27D6A06E26320A3E0068D890 /* ChannelView.swift in Sources */,
+				2784881C26325FD500051427 /* CursorView.swift in Sources */,
+				27D6A05C26311C8E0068D890 /* WiiMenuView.swift in Sources */,
+				27D6A06B26312A240068D890 /* TrackingAreaView.swift in Sources */,
 				27D6A05A26311C8E0068D890 /* Wii_MenuApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
